@@ -58,3 +58,4 @@ use App\Http\Controllers\uiApiController;
 Route::get('get',[uiApiController::class,'get']);
 Route::post('post',[uiApiController::class,'post']);
 Route::put('put/{id}',[uiApiController::class,'put']);
+Route::delete('delete/{id}',[uiApiController::class,'delete']);

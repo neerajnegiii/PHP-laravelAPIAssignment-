@@ -37,9 +37,19 @@ class uiApiController extends Controller
             return response()->json(['success'=>true]);
         }
     }
-
-
     }
 
+function delete($id){
+ $file = storage_path('app/products.json');
+    $products = json_decode(file_get_contents($file), true) ?: [];
+    foreach ($products as $index => $product) {
+        if ($product['id'] == $id) {
+            array_splice($products, $index, 1); 
+            file_put_contents($file, json_encode($products, JSON_PRETTY_PRINT));
 
-}
+            return ["result"=>"Product deleted"];
+        }
+    }
+    return response()->json("Product not found", 404);
+
+}}
